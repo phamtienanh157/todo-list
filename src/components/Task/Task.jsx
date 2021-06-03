@@ -18,7 +18,7 @@ export default function Task(props) {
         id="flexCheckDefault"
         onClick={handleCheck}
       />
-      <p>{task.value}</p>
+      <p>{task}</p>
       <span onClick={handleClick}>
         <i className="fa fa-times"></i>
       </span>

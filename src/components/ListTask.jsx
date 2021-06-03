@@ -11,9 +11,9 @@ export default function ListTask(props) {
   const { listTask, handleCheck, handleClick } = props;
   return (
     <div>
-      {listTask.map((task) => (
+      {listTask.map((task, index) => (
         <Task
-          key={task.id}
+          key={index}
           task={task}
           handleCheck={handleCheck}
           handleClick={handleClick}
