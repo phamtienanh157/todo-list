@@ -1,15 +1,15 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useRef } from "react";
 import "./Input.scss";
-
 Input.prototype = {
-  onChange: PropTypes.func,
-  onClick: PropTypes.func,
+  callBack: PropTypes.func,
+  handleAdd: PropTypes.func,
 };
 
 export default function Input(props) {
   const { callBack, handleAdd } = props;
-  const [added, setAdded] = useState(false);
+
+  const input = useRef(null);
 
   const sendData = (e) => {
     callBack(e.target.value);
@@ -17,29 +17,28 @@ export default function Input(props) {
 
   const onClick = () => {
     handleAdd();
-    document.getElementById("input").value = "";
-    document.getElementById("input").focus();
+    input.current.value = null;
   };
 
   return (
-    <form className="form">
-      <div class="input-group mb-3">
+    <form>
+      <div className="input-group mb-3">
         <input
-          id="input"
           type="text"
-          class="form-control"
+          className="form-control"
           placeholder="Add your task"
           aria-label="Add your task"
           aria-describedby="button-add"
           onChange={(e) => sendData(e)}
+          ref={input}
         />
         <button
-          class="btn btn-primary"
+          className="btn btn-primary"
           type="button"
           id="button-add"
           onClick={onClick}
         >
-          <i class="fa fa-plus-circle"></i>
+          <i className="fa fa-plus-circle"></i>
         </button>
       </div>
     </form>

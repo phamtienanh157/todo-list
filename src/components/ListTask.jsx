@@ -4,19 +4,19 @@ import Task from "./Task/Task";
 ListTask.prototype = {
   listTask: PropTypes.array,
   handleCheck: PropTypes.func,
-  handleClick: PropTypes.func,
+  handleDelete: PropTypes.func,
 };
 
 export default function ListTask(props) {
-  const { listTask, handleCheck, handleClick } = props;
+  const { listTask, handleCheck, handleDelete } = props;
   return (
     <div>
-      {listTask.map((task, index) => (
+      {listTask.map((task) => (
         <Task
-          key={index}
+          key={task.id}
           task={task}
           handleCheck={handleCheck}
-          handleClick={handleClick}
+          handleDelete={handleDelete}
         />
       ))}
     </div>

@@ -7,9 +7,7 @@ function App() {
   const [task, setTask] = useState("");
 
   const [listTask, setListTask] = useState([
-    "hello cac ban",
-    "lam sao",
-    "danh nhau a",
+    { id: 0, value: "Try to do your best !!!", state: false },
   ]);
 
   const getData = (e) => {
@@ -17,18 +15,47 @@ function App() {
   };
 
   const addTask = () => {
-    if (task === "") alert("Ban chua nhap task");
-    else {
-      const list = listTask;
-      list.push(task);
+    if (!task.replace(/\s/g, "").length || task == null) {
+      alert("Write your task, please !!!");
+    } else {
+      const list = [...listTask];
+      const item = {
+        id: listTask.length,
+        value: task,
+        state: false,
+      };
+      list.push(item);
       setListTask(list);
-      console.log(list);
+      setTask("");
     }
   };
+
+  const handleCheck = (task) => {
+    const list = [...listTask];
+    const index = list.indexOf(task);
+    list[index].state = !list[index].state;
+    setListTask(list);
+  };
+
+  const handleDelete = (id) => {
+    setListTask(listTask.filter((task) => task.id !== id));
+  };
+
   return (
     <div className="App">
+      <h1>Todo List</h1>
       <Input callBack={getData} handleAdd={addTask} />
-      <ListTask listTask={listTask} />
+      <ListTask
+        listTask={listTask.filter((task) => task.state === false)}
+        handleCheck={handleCheck}
+        handleDelete={handleDelete}
+      />
+      <h1>Completed</h1>
+      <ListTask
+        listTask={listTask.filter((task) => task.state !== false)}
+        handleCheck={handleCheck}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 }

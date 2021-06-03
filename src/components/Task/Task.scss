@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   padding: 5px 5px;
+  transition: 0.3s;
   .form-check-input[type="checkbox"] {
     border-radius: 50%;
     margin: 0;
@@ -9,6 +10,9 @@
   p {
     font-size: 20px;
     margin: 0 15px;
+  }
+  .completed {
+    text-decoration: line-through;
   }
   span {
     cursor: pointer;

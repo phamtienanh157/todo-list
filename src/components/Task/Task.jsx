@@ -4,11 +4,15 @@ import "./Task.scss";
 Task.prototype = {
   task: PropTypes.string,
   handleCheck: PropTypes.func,
-  handleClick: PropTypes.func,
+  handleDelete: PropTypes.func,
 };
 
 export default function Task(props) {
-  const { task, handleCheck, handleClick } = props;
+  const { task, handleCheck, handleDelete } = props;
+  const getTextClass = () => {
+    if (task.state) return "completed";
+  };
+  console.log(getTextClass());
   return (
     <div className="task">
       <input
@@ -16,10 +20,11 @@ export default function Task(props) {
         type="checkbox"
         value=""
         id="flexCheckDefault"
-        onClick={handleCheck}
+        onClick={() => handleCheck(task)}
+        checked={task.state}
       />
-      <p>{task}</p>
-      <span onClick={handleClick}>
+      <p className={getTextClass()}>{task.value}</p>
+      <span onClick={() => handleDelete(task.id)}>
         <i className="fa fa-times"></i>
       </span>
     </div>
