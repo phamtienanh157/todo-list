@@ -42,20 +42,23 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <h1>Todo List</h1>
-      <Input callBack={getData} handleAdd={addTask} />
-      <ListTask
-        listTask={listTask.filter((task) => task.state === false)}
-        handleCheck={handleCheck}
-        handleDelete={handleDelete}
-      />
-      <h1>Completed</h1>
-      <ListTask
-        listTask={listTask.filter((task) => task.state !== false)}
-        handleCheck={handleCheck}
-        handleDelete={handleDelete}
-      />
+    <div>
+      <div className="background"></div>
+      <div className="App">
+        <h1>Todo List</h1>
+        <Input callBack={getData} handleAdd={addTask} />
+        <ListTask
+          listTask={listTask.filter((task) => task.state === false)}
+          handleCheck={handleCheck}
+          handleDelete={handleDelete}
+        />
+        <h1>Completed</h1>
+        <ListTask
+          listTask={listTask.filter((task) => task.state !== false)}
+          handleCheck={handleCheck}
+          handleDelete={handleDelete}
+        />
+      </div>
     </div>
   );
 }
