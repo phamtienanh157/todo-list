@@ -6,13 +6,16 @@
   margin-bottom: 10px;
   border: 1px solid #000000;
   border-radius: 8px;
+  word-wrap: break-word;
   .form-check-input[type="checkbox"] {
     border-radius: 50%;
+    min-width: 18px;
+    min-height: 18px;
     margin: 0;
   }
   p {
     font-size: 20px;
-    margin: 0 15px;
+    margin: 0 10px;
   }
   .completed {
     text-decoration: line-through;
