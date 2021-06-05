@@ -11,7 +11,7 @@ function App() {
   ]);
 
   const getData = (e) => {
-    setTask(e);
+    setTask(e.target.value);
   };
 
   const addTask = () => {
@@ -46,7 +46,7 @@ function App() {
       <div className="background"></div>
       <div className="App">
         <h1>Todo List</h1>
-        <Input callBack={getData} handleAdd={addTask} />
+        <Input handleChange={getData} handleAdd={addTask} />
         <ListTask
           listTask={listTask.filter((task) => task.state === false)}
           handleCheck={handleCheck}

@@ -2,18 +2,14 @@ import PropTypes from "prop-types";
 import { useRef } from "react";
 import "./Input.scss";
 Input.prototype = {
-  callBack: PropTypes.func,
+  handleChange: PropTypes.func,
   handleAdd: PropTypes.func,
 };
 
 export default function Input(props) {
-  const { callBack, handleAdd } = props;
+  const { handleAdd, handleChange } = props;
 
   const input = useRef(null);
-
-  const sendData = (e) => {
-    callBack(e.target.value);
-  };
 
   const onClick = () => {
     handleAdd();
@@ -29,7 +25,7 @@ export default function Input(props) {
           placeholder="Add your task"
           aria-label="Add your task"
           aria-describedby="button-add"
-          onChange={(e) => sendData(e)}
+          onChange={handleChange}
           ref={input}
         />
         <button

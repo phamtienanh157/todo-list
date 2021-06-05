@@ -12,14 +12,13 @@ export default function Task(props) {
   const getTextClass = () => {
     if (task.state) return "completed";
   };
-  console.log(getTextClass());
   return (
     <div className="task">
       <input
         className="form-check-input"
         type="checkbox"
+        readOnly
         value=""
-        id="flexCheckDefault"
         onClick={() => handleCheck(task)}
         checked={task.state}
       />
