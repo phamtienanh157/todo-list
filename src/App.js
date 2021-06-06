@@ -1,14 +1,16 @@
 import Input from "./components/Input/Input";
 import ListTask from "./components/ListTask";
 import "./App.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const [task, setTask] = useState("");
 
-  const [listTask, setListTask] = useState([
-    { id: 0, value: "Try to do your best !!!", state: false },
-  ]);
+  const [listTask, setListTask] = useState(
+    JSON.parse(localStorage.getItem("savedData")) || [
+      { id: 0, value: "Try to do your best !!!", state: false },
+    ]
+  );
 
   const getData = (e) => {
     setTask(e.target.value);
@@ -40,6 +42,10 @@ function App() {
   const handleDelete = (id) => {
     setListTask(listTask.filter((task) => task.id !== id));
   };
+
+  useEffect(() => {
+    localStorage.setItem("savedData", JSON.stringify(listTask));
+  }, [listTask]);
 
   return (
     <div>
